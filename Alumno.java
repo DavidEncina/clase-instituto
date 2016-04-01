@@ -28,8 +28,15 @@ public class Alumno
         this.nombre = nombre;
         this.edad = edad;
         numeroClase = numeroAlumno;
-        numeroAlumno += 1;
+        numeroAlumno++;
         notas = new ArrayListInt();
     }
 
+    /**
+     * Introduce notas al alumno
+     */
+    public void asignaNotas(int nota)
+    {
+        notas.add(nota);
+    }
 }

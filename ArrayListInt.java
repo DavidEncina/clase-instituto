@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 /**
  * Write a description of class ArrayListInt here.
  * 
@@ -8,158 +7,194 @@ import java.util.Arrays;
  */
 public class ArrayListInt
 {
-    // Lista que almacena los numeros
-    private int[] numeros;
+    // instance variables - replace the example below with your own
+    private int coleccion[];
 
     /**
      * Constructor for objects of class ArrayListInt
      */
     public ArrayListInt()
     {
-        // Inicializa el array
-        numeros = new int[0];
+        coleccion = new int [0];
     }
 
     /**
-     * Añade un elemento a la colección al final de la misma.
+     * Metodo para añadir un elemento dado al Array
      */
     public void add(int elemento)
     {
-        int[] nuevoArray = new int[numeros.length + 1];
-        for (int i = 0; i < numeros.length; i++) {            
-            nuevoArray[i] = numeros[i];
+        // Creo un array para despues pasar los datos y paso todos los valores con un bucle
+        int[] guardado = new int[coleccion.length + 1];
+
+        for(int index = 0; index < coleccion.length; index++)
+        {
+            guardado[index] = coleccion [index];
         }
-        nuevoArray[numeros.length] = elemento;
-        numeros = nuevoArray;
+        //Asigno el parametro elemento en la posicion dada por el tamaño
+
+        guardado[coleccion.length] = elemento;
+
+        //asigno los valores de la coleccion guardado a la coleccion principal
+
+        coleccion = guardado;
     }
 
     /**
-     * Añade un elemento a la colección en la posición especificada por el parámetro index.
-     * Si el valor de index no es válido, entonces no hace nada.
-     * Los elementos a continuación del añadido se desplazan una posición.
+     * Metodo que añade un elemento a la arrayList en la posicion indicada
+     * @param index La posición donde colocar el numero
+     * @param elemento El elemento a añadir
      */
-    public void add(int index, int elemento)
+    public void add( int index, int elemento)
     {
-        if (index <= numeros.length && index >= 0)
+
+        if (index <= coleccion.length && index >= 0)
         {
-            int[] local = numeros;
-            numeros = new int[local.length + 1];
+            int[] local = coleccion;
+            coleccion = new int[local.length + 1];
             for (int cont = 0; cont < local.length;cont++)
             {
                 if (cont < index)
                 {
-                    numeros[cont] = local[cont];
+                    coleccion[cont] = local[cont];
                 }
                 else
                 {
-                    numeros[cont+1] = local[cont];
+                    coleccion[cont+1] = local[cont];
                 }
             }
-            numeros[index] = elemento;
+            coleccion[index] = elemento;
         }
     }
 
     /**
-     * Vacia la colecion
+     * Metodo que permite vaciar la coleccion
      */
     public void clear()
     {
-        numeros = new int[0];
+        coleccion = new int[0];
     }
 
     /**
-     * Devuelve true si la colección contiene ese elemento, false en cualquier otro caso.
+     * Metodo que devuelve si se ha encontrado un elemento en la coleccion a traves del parametro elemento
      */
     public boolean contains(int elemento)
     {
-        boolean contieneElemento = false;
-        int i = 0;
-        while (i < numeros.length && !contieneElemento) {
-            if (numeros[i] == elemento) {
-                contieneElemento = true;
+        // Creamos el boolean que devolveremos como false y un indice
+        boolean elementoEncontrado = false;
+        int index = 0;
+        while (index < coleccion.length && (elementoEncontrado == false))
+        {
+            if (coleccion[index] == elemento)
+            {
+                elementoEncontrado = true;
             }
-            i++;
+            index++;
         }
-        return contieneElemento;
+        return elementoEncontrado;
     }
 
     /**
-     * Devuelve el elemento existente en la posición indicada.
-     * Si el valor de index no es válido, entonces devuelve -1.
+     * Metodo que busca si un elemento esta en la posicion eindicada por parametro
+     * si no encuentra devuelve -1.
      */
     public int get(int index)
     {
-        int elemento = -1;
-        if (index >= 0 && index < numeros.length) {
-            elemento = numeros[index];
-        } 
+
+        int elemento = 0;
+
+        if (index >= 0 && index < coleccion.length)
+        {
+            elemento = coleccion[index];
+
+        } else {
+
+            elemento = -1;
+
+        }
         return elemento;
     }
 
     /**
-     * Reemplaza el elemento en la posición index con el valor de element.
-     * Si el índice no es válido, no hace nada.
+     *Metodo que añade un elemento en la posicion indicada sobreescribiendo el anterior
      */
-    public void set(int index, int element)
+    public void set( int index, int elemento)
     {
-        if (index < numeros.length && index >= 0) {
-            numeros[index] = element;
-        }        
+
+        if (index >= 0 && index < coleccion.length)
+        {
+            coleccion[index] = elemento;
+        }
     }
 
     /**
-     * Devuelve el indice en el que aparece la primera ocurrencia del elemento especificado o -1 en caso de que la colección no contenga el elemento especificado.
+     * Metodo que devuelve el indice en el que aparece la primera ocurrencia del elemento especificado o -1 en caso de que la colección no contenga el elemento especificado.
      */
     public int indexOf(int elemento)
     {
-        int indice = -1;
-        int i = 0;
+
         boolean elementoEncontrado = false;
-        while (i < numeros.length && !elementoEncontrado) {
-            if (elemento == numeros[i]) {
-                indice = i;
+        int indice = 0;
+        int elementoBuscado = 0;
+        while (indice < coleccion.length && (elementoEncontrado == false))
+        {
+            if (coleccion[indice] == elemento)
+            {
                 elementoEncontrado = true;
+                elementoBuscado = indice;
             }
-            i++;
+            indice++;
         }
-        return indice;
+        if (elementoEncontrado == false) {
+
+            elementoBuscado = -1;
+        }
+        return elementoBuscado;
     }
 
     /**
-     * Devuelve true si la lista no contiene elementos.
+     * Metodo que devuelve true si la lista no contiene elementos.
      */
-    public boolean isEmpty() 
+    public boolean isEmpty()
     {
-        return (numeros.length == 0);
+        boolean coleccionVacia = false;
+
+        if ((coleccion.length == 0)) {
+            coleccionVacia = true;
+        }
+
+        return coleccionVacia;
     }
 
     /**
-     * Elimina de la colección el elemento que ocupa la posición especificada y devuelve dicho elemento.
-     * Si el valor de index no es válido, no hace nada y devuelve -1.
+     * Metodo que elimina de la colección el elemento que ocupa la posición especificada y devuelve dicho elemento. Si el valor de index no es válido, no hace nada y devuelve -1.
      */
     public int remove(int index)
     {
         int eliminado = -1;
-        if(index >= 0 && index < numeros.length)
+        if(index >= 0 && index < coleccion.length)
         {
-            int[] nuevoArray = numeros;
-            numeros = new int[numeros.length -1];
-            for(int i = 0; i < index; i++){
-                numeros[i] = nuevoArray[i];
+            int[] nuevoArray = coleccion;
+            coleccion = new int[coleccion.length -1];
+
+            for(int i=0; i < index; i++){
+                coleccion[i] = nuevoArray[i];
             }
-            for (int i = index; i < numeros.length; i++){
-                numeros[i] = nuevoArray[i + 1];
+            for (int i=index; i<coleccion.length; i++){
+                coleccion[i] = nuevoArray[i +1];
             }
             eliminado = nuevoArray[index];
+
         }
         return eliminado;
+
     }
 
     /**
-     * Devuelve el número de elementos de la colección.
+     * Metodo que devuelve el número de elementos de la colección
      */
     public int size()
     {
-        return numeros.length;
+        return coleccion.length;
     }
+
 }

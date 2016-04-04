@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 /**
  * Write a description of class Alumno here.
@@ -39,4 +40,24 @@ public class Alumno
     {
         notas.add(nota);
     }
+
+    /**
+     * Permite conocer la nota media (en decimal) del alumno en este momento.
+     */
+    public float notaMedia()
+    {
+        float media = 0;
+        if (notas.size() == 0) {
+            media = 0.0f;
+        }
+        else {
+            int sumaNotas = 0;
+            for(int i = 0; i < notas.size(); i++){
+                sumaNotas += notas.get(i);
+            }
+            media = sumaNotas/(float) notas.size();
+        }
+        return media;
+    }
+
 }

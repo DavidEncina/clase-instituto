@@ -59,5 +59,22 @@ public class Alumno
         }
         return media;
     }
-
+    
+    /**
+     * Devuelve si el alumno esta o suspenso
+     */
+    public boolean aprobado()
+    {
+        return notaMedia() >= NOTA_APROBAR;
+    }
+    
+    /**
+     * Imprime por pantalla la información del alumno
+     */
+    public String toString()
+    {
+        String informacion = "Nombre: " + nombre + "\nEdad: " + edad + "\nNumero de clase: " + numeroClase +
+        "\nNota media: " + notaMedia() + " Aprobado: " + aprobado();
+        return informacion;
+    }
 }

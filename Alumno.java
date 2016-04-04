@@ -73,7 +73,7 @@ public class Alumno
      */
     public String toString()
     {
-        String informacion = "Nombre: " + nombre + "\nEdad: " + edad + "\nNumero de clase: " + numeroClase +
+        String informacion = "Nombre: " + nombre + "\nEdad: " + edad + "\nNumero de clase: " + numeroAlumno +
         "\nNota media: " + notaMedia() + " Aprobado: " + aprobado();
         return informacion;
     }

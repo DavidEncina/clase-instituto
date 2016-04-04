@@ -1,33 +1,34 @@
+import java.util.Random;
 
 /**
- * Write a description of class ds here.
+ * Write a description of class Test here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class Test
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class ds
-     */
-    public Test()
+    private String[] nombres = {"Dani", "Alfonso", "Pedro", "Juan", "Jesus", "Felipe", "Antonio", "Maria", "Ana", "Lucia"};    
+    private static final int EDAD_MINIMA = 18;
+    private static final int EDAD_MAXIMA = 82;   
+    
+    public void test()
     {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+        Random random = new Random();
+        Alumno alumno1 = new Alumno(nombres[random.nextInt(5)], random.nextInt(EDAD_MAXIMA) + EDAD_MINIMA);
+        Alumno alumno2 = new Alumno(nombres[random.nextInt(5)], random.nextInt(EDAD_MAXIMA) + EDAD_MINIMA);
+        Alumno alumno3 = new Alumno(nombres[random.nextInt(5)], random.nextInt(EDAD_MAXIMA) + EDAD_MINIMA);
+        Alumno alumno4 = new Alumno(nombres[random.nextInt(5)], random.nextInt(EDAD_MAXIMA) + EDAD_MINIMA);
+        Alumno alumno5 = new Alumno(nombres[random.nextInt(5)], random.nextInt(EDAD_MAXIMA) + EDAD_MINIMA);
+        alumno1.asignaNotas(random.nextInt(11));
+        alumno2.asignaNotas(random.nextInt(11));
+        alumno3.asignaNotas(random.nextInt(11));
+        alumno4.asignaNotas(random.nextInt(11));
+        alumno5.asignaNotas(random.nextInt(11));
+        System.out.println(alumno1);
+        System.out.println(alumno2);
+        System.out.println(alumno3);
+        System.out.println(alumno4);
+        System.out.println(alumno5);
     }
 }
